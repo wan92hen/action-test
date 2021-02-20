@@ -1,0 +1,29 @@
+# This is a basic workflow to help you get started with Actions
+
+name: ISSUE通知
+
+on:
+  issues:
+    types: [opened, edited, milestoned]
+  issue_comment:
+    types: [created, deleted]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: wechat-work robot message
+        uses: fifsky/wechat-work-action@master
+        with:
+          url: ${{ secrets.WECHATWORK_WEBHOOK}}
+          type: markdown
+          content: |
+           # GibHub ISSUE 通知
+           ## ISSUE ${{ github.event.action }}
+           > from github action message
+           > ^_^
+           - 仓库: ${{ github.repository }}
+           - 提交人: ${{ github.event.issue.user.login }}
+           - ISSUE 标题: [${{ github.event.issue.title }}](github.event.issue.url)
