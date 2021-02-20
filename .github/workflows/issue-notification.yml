@@ -22,8 +22,7 @@ jobs:
           content: |
            # GibHub ISSUE 通知
            ## ISSUE ${{ github.event.action }}
-           > from github action message
-           > ^_^
+
            - 仓库: ${{ github.repository }}
            - 提交人: ${{ github.event.issue.user.login }}
-           - ISSUE 标题: [${{ github.event.issue.title }}](github.event.issue.url)
+           - ISSUE 标题: [${{ github.event.issue.title }}](${{ github.event.issue.url }})
