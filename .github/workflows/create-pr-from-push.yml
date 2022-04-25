@@ -2,7 +2,7 @@ on:
   push:
     branches:    
       - 'pr@**'
-      - 'repr@'
+      - 'repr@**'
 
 name: Create pull request from specific branches
 
