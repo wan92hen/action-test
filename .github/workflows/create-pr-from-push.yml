@@ -1,0 +1,21 @@
+on:
+  push:
+    branches:    
+      - 'pr@**'
+      - 'repr@'
+
+name: Create pull request from specific branches
+
+jobs:
+  generic_handler:
+    name: Generic handler for MeterSphere Repos
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create pull request
+        uses: jumpserver/action-generic-handler@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+      - uses: actions/checkout@v2
+      - uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: ${{ github.base_ref }}

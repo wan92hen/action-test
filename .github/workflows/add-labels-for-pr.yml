@@ -1,4 +1,4 @@
-on: [push, pull_request, release]
+on: pull_request
 
 name: MeterSphere pull request handler
 
@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add labels
-        uses: wangzhen-fit2cloud/action-generic-handler@master
+        uses: jumpserver/action-generic-handler@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v2
